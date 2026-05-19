@@ -87,5 +87,6 @@ set_target_properties(rtmp PROPERTIES IMPORTED_LOCATION ${CMAKE_LIBRARY_OUTPUT_D
 
 # Target library
 add_library(rtmpdroid SHARED glue.cpp)
+target_link_options(rtmpdroid PRIVATE "-Wl,-z,max-page-size=16384" "-Wl,-z,common-page-size=16384")
 include_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/include)
 target_link_libraries(rtmpdroid log android rtmp ${TARGET_LINK_LIBRARY})
