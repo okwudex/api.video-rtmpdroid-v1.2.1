@@ -8,7 +8,7 @@ apply from: 'maven-push.gradle'
 android {
     namespace 'video.api.rtmpdroid'
 
-    ndkVersion "27.2.12479018"
+    ndkVersion "26.1.10909125"
 
     defaultConfig {
         minSdk 21
