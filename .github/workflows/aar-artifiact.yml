@@ -1,0 +1,13 @@
+name: Build 16KB AAR
+on: { workflow_dispatch: {}, push: { branches: [ "**" ] } }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v2
+        with: { java-version: 17, distribution: 'adopt' }
+      - run: git config --global user.email ci@local && git config --global user.name ci
+      - run: chmod +x gradlew && ./gradlew :lib:assemblePackedRelease
+      - uses: actions/upload-artifact@v4
+        with: { name: rtmpdroid-16kb-aar, path: lib/build/outputs/aar/*-packed-release.aar }
